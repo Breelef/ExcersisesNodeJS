@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-//app.use(express.static("public"));
+app.use(express.static("public"));
 
 //const day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 //const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
