@@ -5,15 +5,18 @@ app.use(express.static("public"));
 
 const day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+//Pages
 
-app.get("/time/day", (req, res)=>{
-    console.log(day[date.getDay()])
-    res.send({data: day[new Date().getDay()]});
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "public/timepage/timepage.html");
+})
+
+//API
+
+app.get("/api/time", (req, res)=>{
+    res.send({});
 });
 
-app.get("/time/month", (req, res)=>{
-    res.send({data: month[new Date().getMonth]});
-});
 const PORT = 5000;
 app.listen(PORT, (error) => {
     if(error){
