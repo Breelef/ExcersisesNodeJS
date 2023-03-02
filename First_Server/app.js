@@ -3,17 +3,17 @@ const app = express();
 
 app.use(express.static("public"));
 
-const day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+//const day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+//const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 //Pages
 
-app.get("/", (req, res) => {
+app.get("/christmasTimer", (req, res) => {
     res.sendFile(__dirname + "public/timepage/timepage.html");
 })
 
 //API
 
-app.get("/api/time", (req, res)=>{
+app.get("/api/timer", (req, res)=>{
     res.send({});
 });
 
