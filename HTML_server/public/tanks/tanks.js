@@ -28,4 +28,5 @@ function showTanks(result){
         tanksDiv.appendChild(breakBr);
         tanksWrapperDiv.appendChild(tanksDiv);
     });
+    
 };
