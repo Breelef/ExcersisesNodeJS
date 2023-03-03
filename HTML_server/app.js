@@ -5,7 +5,7 @@ const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.json());
 
-const tanksUtil = require("./public/tanks/tanks.js")
+//const tanksUtil = require("./public/tanks/tanks.js")
 let visitorCount = 0;
     
 
@@ -20,6 +20,10 @@ app.get("/tanks", (req, res) => {
 
 app.get("/visitors", (req, res) => {
     res.sendFile(__dirname + "/public/visitors/visitors.html");
+});
+
+app.get("/guards", (req, res) => {
+    res.sendFile(__dirname + "/public/guards/guards.html");
 });
 
 //API

@@ -1,0 +1,29 @@
+{
+  "name": "upper",
+  "version": "0.0.1",
+  "description": "Motivation app with jokes, quotes and daily commands",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Breelef/ExcersisesNodeJS.git"
+  },
+  "keywords": [
+    "motivation",
+    "jokes",
+    "daily",
+    "commands"
+  ],
+  "author": "Breelef",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Breelef/ExcersisesNodeJS/issues"
+  },
+  "homepage": "https://github.com/Breelef/ExcersisesNodeJS#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
