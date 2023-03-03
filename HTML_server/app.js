@@ -5,11 +5,7 @@ const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.json());
 
-const tanks = [
-    {name: "Leopard", nationality: "Germany"},
-    {name: "Tiger", nationality: "Germany", year: 1943},
-    {name: "M1 Abrams", version: "M1"}
-];
+const tanksUtil = require("./public/tanks/tanks.js")
 let visitorCount = 0;
     
 

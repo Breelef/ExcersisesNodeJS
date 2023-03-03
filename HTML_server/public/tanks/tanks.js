@@ -4,6 +4,9 @@ Step 1: Fetch Tanks
 Step 2: console log tanks
 Bonus: Add them to the div: Tanks-wrapper
 */
+const { tanks } = require("./tanks.json");
+
+
 
 fetch("/api/tanks").then(response => response.json()).then(result => showTanks(result));
 
