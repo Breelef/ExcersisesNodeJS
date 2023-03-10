@@ -25,6 +25,9 @@ app.get("/visitors", (req, res) => {
 app.get("/guards", (req, res) => {
     res.sendFile(__dirname + "/public/guards/guards.html");
 });
+app.get("/frontpage", (req, res) => {
+    res.sendFile(__dirname + "/public/frontpage/frontpage.html");
+});
 
 //API
 
