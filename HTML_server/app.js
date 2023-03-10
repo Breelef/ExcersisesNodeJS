@@ -29,10 +29,11 @@ app.get("/frontpage", (req, res) => {
     res.sendFile(__dirname + "/public/frontpage/frontpage.html");
 });
 
+
 //API
 
 app.get("/api/tanks", (req, res) => {
-    res.send(tanks);
+    res.send({});
 });
 
 app.get("/api/visitors", (req, res) => {
@@ -41,6 +42,13 @@ app.get("/api/visitors", (req, res) => {
 
 app.put("/api/visitors", (req, res) =>{
     res.send({data: ++visitorCount});
+});
+
+app.get("/api/guards", (req, res) => {
+    if(req.query.passport === "theskyisblue"){
+        return res.redirect("/api/tanks");
+    } 
+    res.send({message: "you are not allowed to see the tanks, you dont have the secret"});
 });
 
 
