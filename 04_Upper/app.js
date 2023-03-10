@@ -3,7 +3,7 @@ const app = express();
 
 import path from "path";
 //import jokes from "./util/jokes.js";
-//app.use(express.static("public"));
+app.use(express.static("public"));
 
 
 app.get("/", (req, res) =>{
