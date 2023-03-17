@@ -5,16 +5,18 @@ import path from "path";
 //import jokes from "./util/jokes.js";
 app.use(express.static("public"));
 import jokes from "./util/jokes.js";
-//console.log(await jokes.getJoke());
-import fs from "fs";
-const navbar = fs.readFileSync("./public/components/navbar/navbar.html").toString();
-const footer = fs.readFileSync("./public/components/footer/footer.html").toString();
-const frontpage = fs.readFileSync("./public/pages/frontpage/frontpage.html").toString();
-const IRLQuests = fs.readFileSync(".//public/pages/IRLQuests/IRLQuests.html").toString();
-const jokesP = fs.readFileSync("./public/pages/jokes/jokes.html").toString();
-const frontpagePage = navbar + frontpage + footer;
-const IRLQuestsPage = navbar + IRLQuests + footer;
-const jokesPage = navbar + jokesP + footer;
+import renderPage from "./util/templateEngine.js";
+const frontpagePath = "./public/pages/frontpage/frontpage.html";
+const IRLQuestsPath = ".//public/pages/IRLQuests/IRLQuests.html";
+const jokesPath = "./public/pages/jokes/jokes.html";
+const frontpagePage = renderPage(frontpagePath, {
+    tabTitle: "Upper | Welcome"});
+const IRLQuestsPage = renderPage(IRLQuestsPath, {
+    tabTitle: "IRLQuests"});
+const jokesPage = renderPage(jokesPath, {
+    tabTitle: "Jokes",
+    cssLink: `<link rel="stylesheet" href="/pages/jokes/jokes.css">`    
+});
 app.get("/", (req, res) =>{
     res.send(frontpagePage);
 });
