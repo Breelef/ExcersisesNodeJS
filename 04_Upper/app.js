@@ -4,16 +4,16 @@ const app = express();
 import path from "path";
 //import jokes from "./util/jokes.js";
 app.use(express.static("public"));
-import jokes from "./util/jokes.js";
-import renderPage from "./util/templateEngine.js";
-const frontpagePath = "./public/pages/frontpage/frontpage.html";
-const IRLQuestsPath = ".//public/pages/IRLQuests/IRLQuests.html";
-const jokesPath = "./public/pages/jokes/jokes.html";
-const frontpagePage = renderPage(frontpagePath, {
+//import jokes from "./util/jokes.js";
+import templateEngine from "./util/templateEngine.js";
+const frontpage = templateEngine.readPage("./public/pages/frontpage/frontpage.html");
+const IRLQuests = templateEngine.readPage(".//public/pages/IRLQuests/IRLQuests.html");
+const jokes = templateEngine.readPage("./public/pages/jokes/jokes.html");
+const frontpagePage = templateEngine.renderPage(frontpage, {
     tabTitle: "Upper | Welcome"});
-const IRLQuestsPage = renderPage(IRLQuestsPath, {
+const IRLQuestsPage = templateEngine.renderPage(IRLQuests, {
     tabTitle: "IRLQuests"});
-const jokesPage = renderPage(jokesPath, {
+const jokesPage = templateEngine.renderPage(jokes, {
     tabTitle: "Jokes",
     cssLink: `<link rel="stylesheet" href="/pages/jokes/jokes.css">`    
 });
