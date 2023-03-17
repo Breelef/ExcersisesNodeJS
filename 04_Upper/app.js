@@ -6,18 +6,25 @@ import path from "path";
 app.use(express.static("public"));
 import jokes from "./util/jokes.js";
 //console.log(await jokes.getJoke());
-
-
+import fs from "fs";
+const navbar = fs.readFileSync("./public/components/navbar/navbar.html").toString();
+const footer = fs.readFileSync("./public/components/footer/footer.html").toString();
+const frontpage = fs.readFileSync("./public/pages/frontpage/frontpage.html").toString();
+const IRLQuests = fs.readFileSync(".//public/pages/IRLQuests/IRLQuests.html").toString();
+const jokesP = fs.readFileSync("./public/pages/jokes/jokes.html").toString();
+const frontpagePage = navbar + frontpage + footer;
+const IRLQuestsPage = navbar + IRLQuests + footer;
+const jokesPage = navbar + jokesP + footer;
 app.get("/", (req, res) =>{
-    res.sendFile(path.resolve("public/pages/frontpage/frontpage.html"));
+    res.send(frontpagePage);
 });
 
 app.get("/IRLQuests", (req, res) =>{
-    res.sendFile(path.resolve("public", "pages", "IRLQuests/IRLQuests.html"));
+    res.send(IRLQuestsPage);
 });
 
 app.get("/jokes", (req,res) => {
-    res.sendFile(path.resolve("public", "pages", "jokes/jokes.html"));
+    res.send(jokesPage);
 })
 
 
