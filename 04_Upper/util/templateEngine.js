@@ -1,5 +1,5 @@
 import fs from "fs";
-
+import getJoke from "./jokes";
 
 
 
@@ -14,6 +14,16 @@ function renderPage(page, config={}){
 
 function readPage(pagePath){
     return fs.readFileSync(pagePath).toString();
+}
+async function renderJokePage(){
+    const path = "./public/pages/jokes/jokes.html";
+    const jokePage = readPage(path);
+    const joke = await getJoke();
+    
+    const constructedPage = renderPage(jokePage, {
+        tabTitle: "Jokes",
+        cssLink: `<link rel="stylesheet" href="/pages/jokes/jokes.css">`  
+    });
 }
 export default {
     renderPage,
