@@ -10,18 +10,16 @@ function renderPage(page, config={}){
     return navbar + page + footer;
 }
 function readPage(pagePath){
-    fs.readFileSync(pagePath).toString();
+    return fs.readFileSync(pagePath).toString();
 }
 
 function renderLogin(){
+    const footer = fs.readFileSync("./public/components/footer/footer.html").toString()
+                    .replace("$FOOTER_YEAR", `© ${new Date().getFullYear()}`);
     const path = "./public/pages/login/login.html";
     const loginPage = readPage(path);
-    console.log(loginPage);
-    const constructedPage = renderPage(loginPage, {
-        tabTitle: "Login"
-    });
-    console.log(constructedPage);
-    return constructedPage;
+    
+    return loginPage + footer;
 }
 
 export default {

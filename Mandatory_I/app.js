@@ -3,9 +3,10 @@ const app = express();
 app.use(express.static("public"));
 //import jokes from "./util/jokes.js";
 import templateEngine from "./util/templateEngine.js";
+const login = templateEngine.renderLogin();
 
 app.get("/login", (req, res) =>{
-    res.send(templateEngine.renderLogin());
+    res.send(login);
 });
 
 const PORT = 8080;
