@@ -21,9 +21,18 @@ function renderLogin(){
     
     return loginPage + footer;
 }
+function renderFrontpage(){
+    const path = "./public/pages/frontpage/frontpage.html";
+    const frontPage = readPage(path);
+    const constructedPage = renderPage(frontPage, {
+        tabTitle: "Forside"
+    });
+    return constructedPage;
+}
 
 export default {
     renderPage,
     readPage,
-    renderLogin
+    renderLogin,
+    renderFrontpage
 }
