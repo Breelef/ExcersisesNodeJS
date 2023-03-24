@@ -1,5 +1,5 @@
 import fs from "fs";
-import getJoke from "./jokes";
+//import getJoke from "./jokes";
 
 
 
@@ -25,6 +25,7 @@ async function renderJokePage(){
         cssLink: `<link rel="stylesheet" href="/pages/jokes/jokes.css">`  
     });
 }
+
 export default {
     renderPage,
     readPage
