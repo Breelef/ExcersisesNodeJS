@@ -1,5 +1,201 @@
-<h1 class="text-center">Express</h1>
-<h3>Express is a popular framework, which is used to build webapplications in Node.js. 
-    Express gives a lot of valuable tools to make web servers and 
-    handling of HTTP requests and responses. 
-    Some of the features we have had focus on are:</h3>
+<h1 class="text-center mt-3">Node Modules</h1>
+<div class="d-flex justify-content-center">
+    <div class="col-8">
+        <p class="text-center fs-4">
+        Node modules are packages we use as developers to access a large variety of functionality. 
+    It can be from low-level working with files to a higher level library for building web application, 
+    databases, or user authentication. It is an easy and reliable way to add functionality to your 
+    application. Some of the node modules we have you used in class are:
+        </p>
+    </div>    
+</div>
+    <div class="d-flex justify-content-center mt-5">
+        <div class="col-10">
+        <h3 class="">Nodemon</h3>
+        <p class="fs-5">
+        This is a module we use to automatically restart our application when there are changes detected 
+        in the source code. It helps developers speed up the process by automatically restarting the 
+        server when you make changes. It is useful tool in the development stages of your application.
+        Nodemon monitors the file system for any changes in the code and you can define it by writing 
+        this in a nodemon.json file:
+            </p>
+            <pre class="bg-dark text-white">
+                <code>
+                    {
+                        "ext": "js, json, html"
+                    }
+                </code>
+              </pre>
+    </div>
+</div>
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-10">
+    <h3 class="">Express</h3>
+    <p class="fs-5">
+        Express is a popular framework, which is used to build webapplications in Node.js. Express gives a lot of valuable tools to make web servers and handling of HTTP requests and responses. 
+        Some of the features we have had focus on are:        
+    </p>
+    <h5>Setup: </h5>
+    <p>It is very easy to setup express. First you need to import it from the node modules, 
+        instantiate it and then make it listen to a port. I have mine setup like this:
+    </p>
+    <pre class="bg-dark text-white">
+        <code>
+            import express from "express";
+            const app = express();
+
+            const PORT = 8080;
+            app.listen(PORT, (error) =>{
+            if(error){
+            console.log(error);
+            }
+            console.log("Server is running on ", PORT);
+        });
+        </code>
+    </pre>
+
+    <h5 class="mt-5"> Routing: </h5>
+    <p>Express provides a simple and flexible routing system that allows developers to map URLs to 
+        specific functions or handlers.</p>
+        <pre class="bg-dark text-white mt-3">
+            <code>
+                app.get("/", (req, res) => {
+                    res.sendFile(__dirname + "/public/frontpage/frontpage.html");
+                });
+            </code>
+          </pre>
+        <p class="mb-5">Here we use the functionality of sending the entire html file for the frontpage to the client, 
+            when you route to "/"</p>
+            <br>
+        <h5> Templating: </h5>
+        <p>We have constructed our own template engine to construct our pages that we serve with express. 
+            In the templating engine we construct our pages before sending it to the client. Meaning we server side rendering it
+        </p>
+        <pre class="bg-dark text-white mt-3">
+            <code>
+                function renderNodeModules(){
+                    const path = "./public/pages/express/express.html";
+                    const modulePage = readPage(path);
+                    const constructedPage = renderPage(modulePage, {
+                        tabTitle: "Node Modules"
+                    });
+                    return constructedPage;
+                }
+            </code>
+          </pre>
+        <p class="mb-5">
+            This is a function to render the page you are reading now. 
+            We get the path and use the readPage function to return the page as a string.
+        </p>
+        <br>
+        <pre class="bg-dark text-white mt-3">
+            <code>
+                function readPage(pagePath){
+                    return fs.readFileSync(pagePath).toString();
+                }
+            </code>
+          </pre>
+          <p class="mb-5">Here we render the page with fs.readFileSync. We can use this because our 
+            page only loads it in once on start. We convert it to a string and then returns it. 
+            We go over to the renderPage function when this is done:</p>
+            <br>
+        <pre class="bg-dark text-white mt-3">
+            <code>
+                function renderPage(page, config={}){
+                    const navbar = fs.readFileSync("./public/components/navbar/navbar.html").toString()
+                                    .replace("$TAB_TITLE", config.tabTitle || "Home")
+                                    .replace("$CSS_LINK", config.cssLink || "");
+                    const footer = fs.readFileSync("./public/components/footer/footer.html").toString()
+                                    .replace("$FOOTER_YEAR", `© ${new Date().getFullYear()}`);
+                
+                    return navbar + page + footer;
+                }
+            </code>
+          </pre>
+        <p class="mb-5">
+            In this code snippet we render the page with fs.readFileSync on our navbar and footer. 
+            We can easily configure things on each webpage with our 
+            variables declared with $VARIABLE_NAME.
+            We got all the HTML converted to string and can easily construct the page. When we return it to our fist method
+        </p>
+        <br>
+        <pre class="bg-dark text-white mt-3">
+            <code>
+                function renderNodeModules(){
+                    const path = "./public/pages/express/express.html";
+                    const modulePage = readPage(path);
+                    const constructedPage = renderPage(modulePage, {
+                        tabTitle: "Node Modules"
+                    });
+                    return constructedPage;
+                }
+            </code>
+          </pre>
+        <p>
+            Here at last you can see we return the entirety of the constructedPage as a string,
+            we can then route to this page via our app.js
+        </p>
+        <pre class="bg-dark text-white">
+            <code>
+                const nodemodulesPage = templateEngine.renderNodeModules();
+
+                app.get("/nodemodules", (req, res) =>{
+                    res.send(nodemodulesPage);
+                });
+            </code>
+          </pre>
+          <h5 class="mt-5"> Static File Serving: </h5>
+            <p>We serve our public as static to gain access to them 
+                when we construct them and send them to the client.</p>
+                <pre class="bg-dark text-white mt-3">
+                    <code>
+                        app.use(express.static("public"));
+                </code>
+            </pre>
+            <p>Here we serve all the files static within the "public" folder. 
+                This way we can seperate our work in static and dynamic files and optimize our application.
+                This can optimize our application because it allows our server to handle them more effieciently</p>
+    </div>
+</div>
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-10">
+    <h3 class="">NPM</h3>
+    <p class="fs-5">
+        To install these node modules and have access to vast library that Node.js contains, 
+        we use a package manager called npm (Node package manager). 
+        It makes it easy to install/uninstall different modules and even switch between different 
+        versions:
+        </p>
+        <br>
+        <p>To install a module, you can search for a package on a website like this:
+            <a href="https://www.npmjs.com/">https://www.npmjs.com/</a>
+        </p>
+        <pre class="bg-dark text-white">
+            <code>
+                npm i express
+            </code>
+          </pre>
+          <p>And the copy the CLI code and put it into the terminal on your project</p>
+          <br>
+          <p>You can also set up your dependencies in the package.json file, 
+            which will install your project when CLI npm install</p>
+            <pre class="bg-dark text-white">
+                <code>
+                    {
+                        "dependencies": {
+                          "autoprefixer": "^10.4.14",
+                          "body-parser": "^1.20.2",
+                          "express": "^4.18.2",
+                          "nocache": "^3.0.4",
+                          "nodemon": "^2.0.22",
+                          "postcss-cli": "^10.1.0",
+                          "sentiment": "^5.0.2"
+                        },
+                        "type": "module"
+                      }
+                </code>
+              </pre>
+              <p>The same goes with uninstalling packages. You can just delete them from your package.json file and npm will remove it from your project.</p>
+    </div>
+</div>
+

@@ -1,0 +1,93 @@
+<h1 class="text-center my-5">Other Theory</h1>
+<div class="d-flex justify-content-center">
+    <div class="col-10">
+        <p class="fs-4">
+        Here i want to expand on some theory we have been through on this course so far.
+        </p>
+    </div>    
+</div>
+<div class="d-flex justify-content-center">
+    <div class="col-10">
+        <h3>REST API</h3>
+        <p class="fs-5">
+            A REST API (Representational State Transfer Application Programming Interface) is a type of web 
+            service that uses the HTTP protocol to allow client applications to communicate with servers and 
+            perform various operations on data. RESTful APIs are commonly used for building web applications, 
+            mobile apps, and other client-server applications that require data to be accessed and manipulated 
+            over the internet.
+        </p>
+        <br>
+        <p class="fs-5">There is convention to follow when you order your API's. Lets say we want to do API's on food</p>
+        <pre class="bg-dark text-white">
+            <code>
+                app.get("/api/food", (req, res) => {
+                    res.send({food});
+                });
+                app.get("/api/food/:id", (req, res) => {
+                    //code logic to find food with the request
+                    res.send(foundFood);
+                });
+                app.post("/api/food", (req, res) => {
+                    //code logic to post food
+                    //send updated food inventory
+                    res.send(food);
+                });
+                app.put("/api/food/:id", (req, res) => {
+                    //code logic to find food with the request
+                    //code logic to update food
+                    //send updated food back
+                    res.send(food);
+                });
+                app.patch("/api/food/:id", (req, res) => {
+                    //code logic to find food with the request
+                    //code logic to update food
+                    //send updated food back
+                    res.send(food);
+                });
+                app.delete("/api/food/:id", (req, res) => {
+                    //code logic to find food with the request
+                    //code logic to delete food from inventory
+                    //Send updated food inventory
+                    res.send(food);
+                });
+            </code>
+          </pre>
+          <p class="fs-5">As you can see there is a clear convention to follow with GET, POST, PUT, PATCH and DELETE in that order</p>
+    </div>    
+</div>
+<br>
+<div class="d-flex justify-content-center mt-3">
+    <div class="col-10">
+        <h3>URL Breakdown</h3>
+        <img src="/assets/images/urlbreakdown.png">
+        <br>
+        <p><h5>Protocol: </h5>Http is the protocol used for communication between the server and the client</p>
+        <p><h5>Host: </h5>this element identifies the domain name or IP address of the server that the client wants to communicate with. </p>
+        <p><h5>Port: </h5> this element specifies the port number that the client should use to communicate with the server. If no port is specified, the client will use the default port for the protocol (Port 80 for HTTP for example.)</p>
+        <p><h5>Path: </h5>This element specifies the path to the resource that the client wants to access on the server</p>
+        <p><h5>Query String: </h5>This element provides additional information to the server about the request. It is typically used to pass parameters to the server, such as search terms or filter criteria</p>
+    </div>    
+</div>
+<br>
+<div class="d-flex justify-content-center mt-3">
+    <div class="col-10">
+        <h3>XSS - Cross-site scripting</h3>
+        <p>XSS (Cross-Site Scripting) is a type of web application security vulnerability that occurs 
+            when an attacker injects malicious code into a web page, which is then executed by 
+            the client's browser. This can allow the attacker to steal sensitive information, 
+            such as login credentials or personal data, or to perform unauthorized actions on 
+            behalf of the user</p>
+            <p>The way we have combated XSS, is when you manipulate a DOM and want to insert something, 
+                then we use innerText and not innerHTML. When you use innerHTML, 
+                you can insert scripts that can then run. 
+                By creating the element and then inserting the text into the element, we can avoid XSS
+            </p>
+            <pre class="bg-dark text-white">
+                <code>
+                    const tankName = document.createElement("p");
+
+                    tankName.innerText = tank.name;
+                </code>
+              </pre>
+    </div>    
+</div>

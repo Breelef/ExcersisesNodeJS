@@ -8,8 +8,5 @@
     "postcss-cli": "^10.1.0",
     "sentiment": "^5.0.2"
   },
-  "devDependencies": {
-    "tailwindcss": "^3.2.7"
-  },
   "type": "module"
 }

@@ -29,10 +29,37 @@ function renderFrontpage(){
     });
     return constructedPage;
 }
+function renderNodeModules(){
+    const path = "./public/pages/express/express.html";
+    const modulePage = readPage(path);
+    const constructedPage = renderPage(modulePage, {
+        tabTitle: "Node Modules"
+    });
+    return constructedPage;
+}
+function renderSSR(){
+    const path = "./public/pages/SSR/ssr.html";
+    const ssrPage = readPage(path);
+    const constructedPage = renderPage(ssrPage, {
+        tabTitle: "SSR"
+    });
+    return constructedPage;
+}
+function renderApi(){
+    const path = "./public/pages/apipage/api.html";
+    const apiPage = readPage(path);
+    const constructedPage = renderPage(apiPage, {
+        tabTitle: "Other theory"
+    });
+    return constructedPage;
+}
 
 export default {
     renderPage,
     readPage,
     renderLogin,
-    renderFrontpage
+    renderFrontpage,
+    renderNodeModules,
+    renderSSR,
+    renderApi
 }

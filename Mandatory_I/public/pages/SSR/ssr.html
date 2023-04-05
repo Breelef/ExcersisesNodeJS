@@ -1,0 +1,60 @@
+<h1 class="text-center mt-3">Server-side Rendering - SSR</h1>
+<div class="d-flex justify-content-center">
+    <div class="col-10">
+        <p class="fs-4">Server-side rendering is way to render web pages on the server-side. 
+    By sending fully-rendered HTML page to the client. A server-side rendered web page loads faster 
+    and more easily discoverable by search engines.</p>
+    <div>
+        <h4>Benefits of SSR</h4>
+        <p>1. Faster page loads: SSR can reduce the time it takes for a web page to load, 
+            as the user is sent a fully rendered HTML page, rather than waiting for the JavaScript 
+            to load and render the page on the client-side.</p>
+        <p>
+            2. Better performance on low-end devices: Devices with limited processing power or memory 
+            can struggle with client-side rendering, but server-side rendering can provide a smoother 
+            experience on these devices.
+        </p>
+        <p>
+            3. Search Engine Optimization: 
+            Search engines can more easily index web pages that are fully rendered on the server-side, 
+            leading to better search engine rankings and increased visibility.
+         </p>
+        </div>
+        <p class="fs-4">If you want to see how we have server side rendered with express 
+            please check out the page about <a href="">Node modules</a></p>
+            <br>
+        <h3>Client-side Rendering vs Server-side Rendering</h3>
+        <p class="fs-5 my-3">Client-side rendering allows for highly interactive and dynamic web applications that can provide a 
+            great user experience. It also allows for the creation of PWAs that can work offline and provide a 
+            native-like experience on mobile devices. However, it can be less optimal for search engine 
+            optimization (SEO) and initial page load times compared to server-side rendering.</p>
+            <p class="fs-5 mt-3">This is an example of Client-side rendering</p>
+            <pre class="bg-dark text-white">
+                <code>
+                    app.get("/", (req, res) => {
+                        res.sendFile(__dirname + "/public/frontpage/frontpage.html");
+                    });
+                </code>
+              </pre>
+              <p class="">Here we send the whole html file and only gives express 
+                path to the file so it can send it to the client.
+                The client then renders your file and it pops up in the browser.</p>
+                <br>
+            <p class="fs-5 mt-3">Compared to server side rendering which looks more like this:</p>
+            <pre class="bg-dark text-white">
+                <code>
+                    const ssrPage = templateEngine.renderSSR();
+
+                    app.get("/ssr", (req, res) =>{
+                        res.send(ssrPage);
+                    });
+                </code>
+              </pre>
+              <p>Here our page is rendered in a template engine we have built and 
+                then send to the client as a string</p>
+                <br>
+                <h5>As you can see, with server side rendering, 
+                    we do the rendering through a template engine in the backend</h5>
+    </div>
+</div>
+
