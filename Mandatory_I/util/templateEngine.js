@@ -1,5 +1,15 @@
 import fs from "fs";
 
+function renderAdminPage(page, config={}){
+    const navbar = fs.readFileSync("./public/components/navbar/adminnavbar.html").toString()
+                    .replace("$TAB_TITLE", config.tabTitle || "Admin Page")
+                    .replace("$CSS_LINK", config.cssLink || "");
+    const footer = fs.readFileSync("./public/components/footer/footer.html").toString()
+                    .replace("$FOOTER_YEAR", `© ${new Date().getFullYear()}`);
+
+    return navbar + page + footer;
+}
+
 function renderPage(page, config={}){
     const navbar = fs.readFileSync("./public/components/navbar/navbar.html").toString()
                     .replace("$TAB_TITLE", config.tabTitle || "Home")
@@ -29,11 +39,11 @@ function renderFrontpage(){
     });
     return constructedPage;
 }
-function renderNodeModules(){
+function renderExpress(){
     const path = "./public/pages/express/express.html";
     const modulePage = readPage(path);
     const constructedPage = renderPage(modulePage, {
-        tabTitle: "Node Modules"
+        tabTitle: "Node Modules || Express"
     });
     return constructedPage;
 }
@@ -53,13 +63,39 @@ function renderApi(){
     });
     return constructedPage;
 }
+function renderDocumentationPage(){
+    const path = "./public/pages/adminpage/adminpage.html";
+    const adminPage = readPage(path);
+    const constructedPage = renderAdminPage(adminPage, {
+        tabTitle: "Add Documentation"
+    });
+    return constructedPage;
+}
+function renderNodemonPage(){
+    const path = "./public/pages/nodemon/nodemon.html";
+    const nodemonPage = readPage(path);
+    const constructedPage = renderPage(nodemonPage, {
+        tabTitle: "Node Modules || Nodemon"
+    });
+    return constructedPage;
+}
+function renderNPMpage(){
+    const path = "./public/pages/NPM/npm.html";
+    const npmPage = readPage(path);
+    const constructedPage = renderPage(npmPage, {
+        tabTitle: "Node modules || NPM"
+    });
+}
 
 export default {
     renderPage,
     readPage,
     renderLogin,
     renderFrontpage,
-    renderNodeModules,
+    renderExpress,
     renderSSR,
-    renderApi
+    renderApi,
+    renderDocumentationPage,
+    renderNodemonPage,
+    renderNPMpage
 }

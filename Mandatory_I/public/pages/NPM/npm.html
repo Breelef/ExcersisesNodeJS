@@ -1,0 +1,52 @@
+<h1 class="text-center mt-3">Node Modules</h1>
+<div class="d-flex justify-content-center">
+    <div class="col-8">
+        <p class="text-center fs-4">
+        Node modules are packages we use as developers to access a large variety of functionality. 
+    It can be from low-level working with files to a higher level library for building web application, 
+    databases, or user authentication. It is an easy and reliable way to add functionality to your 
+    application. Some of the node modules we have you used in class are:
+        </p>
+    </div>    
+</div>
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-10">
+    <h3 class="">NPM</h3>
+    <p class="fs-5">
+        To install these node modules and have access to vast library that Node.js contains, 
+        we use a package manager called npm (Node package manager). 
+        It makes it easy to install/uninstall different modules and even switch between different 
+        versions:
+        </p>
+        <br>
+        <p>To install a module, you can search for a package on a website like this:
+            <a href="https://www.npmjs.com/">https://www.npmjs.com/</a>
+        </p>
+        <pre class="bg-dark text-white">
+            <code>
+                npm i express
+            </code>
+          </pre>
+          <p>And the copy the CLI code and put it into the terminal on your project</p>
+          <br>
+          <p>You can also set up your dependencies in the package.json file, 
+            which will install your project when CLI npm install</p>
+            <pre class="bg-dark text-white">
+                <code>
+                    {
+                        "dependencies": {
+                          "autoprefixer": "^10.4.14",
+                          "body-parser": "^1.20.2",
+                          "express": "^4.18.2",
+                          "nocache": "^3.0.4",
+                          "nodemon": "^2.0.22",
+                          "postcss-cli": "^10.1.0",
+                          "sentiment": "^5.0.2"
+                        },
+                        "type": "module"
+                      }
+                </code>
+              </pre>
+              <p>The same goes with uninstalling packages. You can just delete them from your package.json file and npm will remove it from your project.</p>
+    </div>
+</div>
