@@ -86,10 +86,16 @@ function renderNPMpage(){
         tabTitle: "Node modules || NPM"
     });
 }
+function renderExportpage(){
+    const path = "./public/pages/exportpage/exportpage.html";
+    const exportPage = readPage(path);
+    const constructedPage = renderPage(exportPage, {
+        tabTitle: "Export/Import"
+    });
+    return constructedPage;
+}
 
 export default {
-    renderPage,
-    readPage,
     renderLogin,
     renderFrontpage,
     renderExpress,
@@ -97,5 +103,6 @@ export default {
     renderApi,
     renderDocumentationPage,
     renderNodemonPage,
-    renderNPMpage
+    renderNPMpage,
+    renderExportpage
 }

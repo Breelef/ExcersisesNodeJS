@@ -1,0 +1,88 @@
+<h1 class="text-center mt-3">Export/Import</h1>
+<div class="d-flex justify-content-center">
+    <div class="col-10">
+        <p class="text-center fs-4">
+            In node.js you use Import and export for your functionality or node modules. 
+            We can use our template engine as good example of how we export and import methods and modules. 
+        </p>
+    </div>    
+</div>
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-10">
+    <h3 class="">Import</h3>
+        <pre class="bg-dark text-white">
+            <code>
+                import fs from "fs";
+            </code>
+          </pre>
+    <p class="fs-5">Here we have imported the module fs, which we use to read our html file. 
+        We use this module because it has a wide range of file sytem related functionality, 
+        like the one we use here:</p>
+        <pre class="bg-dark text-white">
+            <code>
+                function renderPage(page, config={}){
+                    const navbar = fs.readFileSync("./public/components/navbar/navbar.html").toString()
+                                    .replace("$TAB_TITLE", config.tabTitle || "Home")
+                                    .replace("$CSS_LINK", config.cssLink || "");
+                    const footer = fs.readFileSync("./public/components/footer/footer.html").toString()
+                                    .replace("$FOOTER_YEAR", `© ${new Date().getFullYear()}`);
+                
+                    return navbar + page + footer;
+                }
+            </code>
+          </pre>
+          <p class="fs-5">It blocks execution of the program until the files are read. 
+            This is good for us because we only read the files once on boot up. </p>
+    </div>
+</div>
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-10">
+    <h3 class="">Export</h3>
+        <pre class="bg-dark text-white">
+            <code>
+                export default {
+                    renderLogin,
+                    renderFrontpage,
+                    renderExpress,
+                    renderSSR,
+                    renderApi,
+                    renderDocumentationPage,
+                    renderNodemonPage,
+                    renderNPMpage
+                }
+            </code>
+          </pre>
+    <p class="fs-5">In our template engine we export all of our methods, 
+        so we can use these methods in other javascript files.</p>
+        <pre class="bg-dark text-white">
+            <code>
+                import templateEngine from "./util/templateEngine.js";
+                const login = templateEngine.renderLogin();
+                const frontpage = templateEngine.renderFrontpage();
+                const expressPage = templateEngine.renderExpress();
+                const ssrPage = templateEngine.renderSSR();
+                const apiPage = templateEngine.renderApi();
+                const docuPage = templateEngine.renderDocumentationPage();
+                const nodemonPage = templateEngine.renderNodemonPage();
+                const npmPage = templateEngine.renderNPMpage();
+            </code>
+          </pre>
+          <p class="fs-5">As you can see here, we pull all our template engine methods so 
+            we can access them in the main and send the data with express. </p>
+            <pre class="bg-dark text-white">
+                <code>
+                    app.get("/login", (req, res) =>{
+                        res.send(login);
+                    });
+                    
+                    app.get("/", (req, res) =>{
+                        res.send(frontpage);
+                    });
+                    
+                    app.get("/express", (req, res) =>{
+                        res.send(expressPage);
+                    });
+                </code>
+              </pre>
+    </div>
+</div>

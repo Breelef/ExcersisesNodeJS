@@ -1,7 +1,6 @@
 import express from "express";
 const app = express();
 app.use(express.static("public"));
-//import jokes from "./util/jokes.js";
 import templateEngine from "./util/templateEngine.js";
 const login = templateEngine.renderLogin();
 const frontpage = templateEngine.renderFrontpage();
@@ -11,6 +10,7 @@ const apiPage = templateEngine.renderApi();
 const docuPage = templateEngine.renderDocumentationPage();
 const nodemonPage = templateEngine.renderNodemonPage();
 const npmPage = templateEngine.renderNPMpage();
+const exportPage = templateEngine.renderExportpage();
 
 app.get("/login", (req, res) =>{
     res.send(login);
@@ -42,6 +42,10 @@ app.get("/nodemon", (req, res) =>{
 
 app.get("/npm", (req, res) =>{
     res.send(npmPage);
+});
+
+app.get("/export", (req, res) =>{
+    res.send(exportPage);
 });
 
 const PORT = 8080;
