@@ -11,6 +11,7 @@ const docuPage = templateEngine.renderDocumentationPage();
 const nodemonPage = templateEngine.renderNodemonPage();
 const npmPage = templateEngine.renderNPMpage();
 const exportPage = templateEngine.renderExportpage();
+const vercelPage = templateEngine.renderVercelpage();
 
 app.get("/login", (req, res) =>{
     res.send(login);
@@ -48,6 +49,10 @@ app.get("/export", (req, res) =>{
     res.send(exportPage);
 });
 
+app.get("/vercel", (req, res) =>{
+    res.send(vercelPage);
+});
+
 const PORT = 8080;
 app.listen(PORT, (error) =>{
     if(error){
@@ -55,4 +60,3 @@ app.listen(PORT, (error) =>{
     }
     console.log("Server is running on ", PORT);
 });
-module.exports = app;

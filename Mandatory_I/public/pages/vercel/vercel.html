@@ -1,9 +1,49 @@
 <h1 class="text-center mt-3">Vercel</h1>
 <div class="d-flex justify-content-center">
     <div class="col-10">
-        <p class="text-center fs-4">
+        <p class="text-center fs-5">
             Here I will show you how you can host your website on a website like Vercel. 
             It is super easy and shouldn't take long to setup:
         </p>
+        <p class="fs-5 mt-5">First you will configure a vercel.json file in your project, 
+            so vercel knows how to run and route your application:</p>
+            <pre class="bg-dark text-white">
+                <code>
+                    {
+                        "version": 2,
+                        "builds": [
+                          {
+                            "src": "app.js",
+                            "use": "@now/node"
+                          }
+                        ],
+                        "routes": [
+                          {
+                            
+                            "src": "/(.*)",
+                            "dest": "app.js"
+                          }
+                        ]
+                      }
+                </code>
+            </pre>
+            <p class="fs-5 mb-5">(Make sure your github is up to date with your project)</p>
+            <p class="fs-5 mt-2">Then you can navigate to their website <a href="wwww.vercel.com">wwww.vercel.com</a> 
+                and then you login in the right corner</p>
+            <p class="fs-5">I would prefer logging in with github as I use my github to pull the code I want to host.</p>
+            <p class="fs-5 mt-5">When you are logged in you start by clicking on “Create new project” below in the center</p>
+            <img src="/assets/images/addnewproject.png" width="1000" height="350" alt="">
+            <p class="fs-5 mt-5">Then you choose your git repository, you want to work from</p>
+            <img src="/assets/images/importGit.png" width="600" height="350" alt="">
+            <p class="fs-5 mt-5">Then you can configure your project.
+                Name it what you want and you can also specify if you have worked with a certain framework.
+            </p>
+            <img src="/assets/images/configureProject.png" width="700" height="350" alt="">
+            <p class="fs-5 mt-5">What we will configure is what root, the project is in</p>
+            <img src="/assets/images/chooseDirectory.png" width="500" height="400" alt="">
+            <p class="fs-5 mt-5">When your project is fully configured, you can press “Deploy”. It will then deploy your website</p>
+            <img src="/assets/images/FullyConfigured.png" width="700" height="350" alt="">
+            <p class="fs-5 mt-5">Then you can go visit your page</p>
+            <img src="/assets/images/visitDomain.png" width="850" height="350" alt="">
     </div>    
 </div>

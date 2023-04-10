@@ -85,12 +85,21 @@ function renderNPMpage(){
     const constructedPage = renderPage(npmPage, {
         tabTitle: "Node modules || NPM"
     });
+    return constructedPage;
 }
 function renderExportpage(){
     const path = "./public/pages/exportpage/exportpage.html";
     const exportPage = readPage(path);
     const constructedPage = renderPage(exportPage, {
         tabTitle: "Export/Import"
+    });
+    return constructedPage;
+}
+function renderVercelpage(){
+    const path = "./public/pages/vercel/vercel.html";
+    const vercelPage = readPage(path);
+    const constructedPage = renderPage(vercelPage, {
+        tabTitle: "Vercel"
     });
     return constructedPage;
 }
@@ -104,5 +113,6 @@ export default {
     renderDocumentationPage,
     renderNodemonPage,
     renderNPMpage,
-    renderExportpage
+    renderExportpage,
+    renderVercelpage
 }
