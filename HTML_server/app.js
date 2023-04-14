@@ -32,24 +32,12 @@ app.get("/frontpage", (req, res) => {
 
 //API
 
-app.get("/api/tanks", (req, res) => {
-    res.send({});
-});
-
-app.get("/api/visitors", (req, res) => {
-    res.send({data: visitorCount});
-});
-
-app.put("/api/visitors", (req, res) =>{
-    res.send({data: ++visitorCount});
-});
-
-app.get("/api/guards", (req, res) => {
-    if(req.query.passport === "theskyisblue"){
-        return res.redirect("/api/tanks");
-    } 
-    res.send({message: "you are not allowed to see the tanks, you dont have the secret"});
-});
+import tanksRouter from "./routers/tanksRouter.js";
+app.use(tanksRouter);
+import guardsRouter from "./routers/guardsRouter.js";
+app.use(guardsRouter);
+import visitorRouter from "./routers/visistorRouter.js";
+app.use(visitorRouter);
 
 
 const PORT = 8080;
