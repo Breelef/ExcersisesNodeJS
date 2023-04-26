@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "name": "server",
+  "version": "1.0.0",
+  "description": "SSR",
+  "main": "app.js",
+  "scripts": {
+    "create-database": "node ./databases/createDatabase.js",
+    "reset-database": "node ./databases/createDatabase.js delete_mode",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
+}

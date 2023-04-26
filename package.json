@@ -6,7 +6,10 @@
     "nocache": "^3.0.4",
     "nodemon": "^2.0.22",
     "postcss-cli": "^10.1.0",
-    "sentiment": "^5.0.2"
+    "sentiment": "^5.0.2",
+    "sqlite": "^4.1.2",
+    "sqlite3": "^5.1.6",
+    "svelte-navigator": "^3.2.2"
   },
   "type": "module"
 }
