@@ -25,9 +25,11 @@
         }catch(error){
             console.error(error);
         }
-        
-        
     };
+    function handleSignUp(){
+        const from = ($location.state && $location.state.from) || "/signup";
+        navigate(from, { replace: true });
+    }
 </script>
 <form class="form-signin" on:submit={handleSubmit}>
     <img src="/SvelteImage.png" class="mb-4" width="200" height="100" alt="">
@@ -46,7 +48,7 @@
   </form>
 <br>
 <p>Do you not have an account yet, then you can sign up here</p>
-<button class="btn btn-lg btn-dark btn-block">Sign up</button>
+<button class="btn btn-lg btn-dark btn-block" on:click={handleSignUp}>Sign up</button>
 
 <style>
     .btn-primary.btn-inverse {

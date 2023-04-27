@@ -17,16 +17,14 @@
                 body: JSON.stringify(data)
             });
                 if (response.status === 200) {
-                    const from = ($location.state && $location.state.from) || "/login";
+                    const from = ($location.state && $location.state.from) || "/";
                     navigate(from, { replace: true });
                 }else {
                     alert('Invalid username or password');
                 }
         }catch(error){
             console.error(error);
-        }
-        
-        
+        } 
     };
 </script>
 <form class="form-signin" on:submit={handleSubmit}>
@@ -34,7 +32,7 @@
     <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
     <div class="mb-2">
         <label for="inputUsername" class="sr-only">
-        <input type="text" bind:value={email} name="username" id="inputUsername"  style="width: 250px;" required placeholder="Enter your username here" />
+        <input type="text" bind:value={email} name="username" id="inputUsername"  style="width: 250px;" required placeholder="Enter your email here" />
     </label>
     </div>
     <div class="mb-2">
@@ -47,5 +45,13 @@
         <input type="password" bind:value={password} name="password" id="inputPassword" style="width: 250px;" required placeholder="Enter your password here" />
         </label>
     </div>
-    <button class="btn btn-lg btn-inverse btn-primary btn-block" type="submit">Submit</button>
+    <button class="btn btn-lg btn-inverse btn-primary btn-block" type="submit">Sign up!</button>
   </form>
+
+<style>
+    .btn-primary.btn-inverse {
+    color: #fff;
+    background-color: #f16e00;
+    border-color: #f16e00;
+}
+</style>
