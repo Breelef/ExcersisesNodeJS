@@ -1,5 +1,5 @@
 <script>
-    import { BASE_URL, user } from "../../../store/globalStore.js";
+    import { BASE_URL } from "../../../store/globalStore.js";
     import { useNavigate, useLocation } from "svelte-navigator";
     const navigate = useNavigate();
 	const location = useLocation();
