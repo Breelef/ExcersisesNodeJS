@@ -31,7 +31,6 @@ router.post("/signup", async (req, res) => {
     try{
         const hashedPassword = await bcrypt.hash(password, 10);
         const result = await db.run("INSERT INTO users (email, username, password) VALUES (?,?,?);", [email, username, hashedPassword]);
-        console.log(result);
         const message = constructMail(email);
         transporter.sendMail(message, (err, info) => {
             if(err){

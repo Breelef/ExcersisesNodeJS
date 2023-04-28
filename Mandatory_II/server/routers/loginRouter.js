@@ -6,13 +6,10 @@ import dotenv from "dotenv";
 dotenv.config();
 
 router.post("/login", async (req, res) => {
-    console.log(req.body.username);
     const { username, password } = req.body;   
     try{
         const user = await db.get("SELECT * FROM users WHERE username=?", [username]);
-        console.log(password, user.password)
         const isSame = await bcrypt.compare(password, user.password);
-        console.log(isSame);
             if(user && isSame){
                 req.session.user = {username};
                 res.status(200).send("Login Succesful");
